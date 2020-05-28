@@ -9,21 +9,23 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(\.horizontalSizeClass) var sizeClass
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(entity: Book.entity(), sortDescriptors: []) var books: FetchedResults<Book>
+
+    @State private var showingAddScreen = false
     
     var body: some View {
-        if sizeClass == .compact {
-            return AnyView( VStack {
-                Text("Active size class:")
-                Text("COMPACT")
+        NavigationView {
+            Text("Count: \(books.count)")
+            .navigationBarTitle("Bookworm")
+                .navigationBarItems(trailing: Button(action: {
+                    self.showingAddScreen.toggle()
+                }) {
+                    Image(systemName: "plus")
+                })
+                .sheet(isPresented: $showingAddScreen) {
+                    AddBookView().environment(\.managedObjectContext, self.moc)
             }
-            .font(.largeTitle))
-        } else {
-            return AnyView( HStack {
-                Text("Active size class:")
-                Text("REGULAR")
-            }
-            .font(.largeTitle))
         }
     }
 }
