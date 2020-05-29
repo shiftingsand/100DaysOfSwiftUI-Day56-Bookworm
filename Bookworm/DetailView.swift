@@ -10,6 +10,9 @@ import SwiftUI
 import CoreData
 
 struct DetailView: View {
+    @Environment(\.managedObjectContext) var moc
+    @Environment(\.presentationMode) var presentationMode
+    @State private var showingDeleteAlert = false
     let book : Book
     
     var body: some View {
@@ -22,11 +25,11 @@ struct DetailView: View {
                     Text(self.book.genre?.uppercased() ?? "FANTASY")
                         .font(.caption)
                         .fontWeight(.black)
-                    .padding(8)
+                        .padding(8)
                         .foregroundColor(.white)
                         .background(Color.black.opacity(0.75))
-                    .clipShape(Capsule())
-                    .offset(x: -5, y: -5)
+                        .clipShape(Capsule())
+                        .offset(x: -5, y: -5)
                 }
                 
                 Text(self.book.author ?? "Unknown authtor")
@@ -34,7 +37,7 @@ struct DetailView: View {
                     .foregroundColor(.secondary)
                 
                 Text(self.book.review ?? "No review")
-                .padding()
+                    .padding()
                 
                 RatingView(rating: .constant(Int(self.book.rating)))
                     .font(.largeTitle)
@@ -43,6 +46,23 @@ struct DetailView: View {
             }
         }
         .navigationBarTitle(Text(book.title ?? "Uknown book"), displayMode: .inline)
+        .navigationBarItems(trailing: Button(action: {self.showingDeleteAlert.toggle()}) {
+            Image(systemName: "trash")
+        })
+        .alert(isPresented: $showingDeleteAlert) {
+            Alert(title: Text("Delete Book"), message: Text("Are you sure?"), primaryButton: .destructive(Text("Delete")) {
+                self.deleteBook()
+                }, secondaryButton: .cancel())
+        }
+    }
+    
+    func deleteBook() {
+        moc.delete(book)
+        
+        // commented out for testing.
+        //try? self.moc.save()
+        
+        presentationMode.wrappedValue.dismiss()
     }
 }
 
