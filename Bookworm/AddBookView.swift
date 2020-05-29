@@ -17,6 +17,14 @@ struct AddBookView: View {
     @State private var rating = 3
     @State private var genre = ""
     @State private var review = ""
+    @State private var showNoGenreAlert : Bool = false
+    var genreMissing : Bool {
+        if genre.trimmingCharacters(in: .whitespacesAndNewlines).count == 0 {
+            return true
+        } else {
+            return false
+        }
+    }
     
     let genres = ["Fantasy", "Horror", "Kids", "Mystery", "Poetry", "Romance", "Thriller"]
     
@@ -41,20 +49,29 @@ struct AddBookView: View {
                 
                 Section {
                     Button("Save") {
-                        let newBook = Book(context: self.moc)
-                        newBook.title = self.title
-                        newBook.author = self.author
-                        newBook.rating = Int16(self.rating)
-                        newBook.genre = self.genre
-                        newBook.review = self.review
-                        
-                        try? self.moc.save()
-                        
-                        self.presentationMode.wrappedValue.dismiss()
+                        // day 56 - challenge 1
+                        if self.genreMissing == true {
+                            self.showNoGenreAlert = true
+                        } else {
+                            let newBook = Book(context: self.moc)
+                            newBook.title = self.title
+                            newBook.author = self.author
+                            newBook.rating = Int16(self.rating)
+                            newBook.genre = self.genre
+                            newBook.review = self.review
+                            
+                            try? self.moc.save()
+                            
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
                     }
                 }
             }
             .navigationBarTitle("Add book")
+                // day 56 - challenge 1
+            .alert(isPresented: $showNoGenreAlert) {
+                Alert(title: Text("Hold up!"), message: Text("You must enter a genre before you can save this book."), dismissButton: .default(Text("OK")))
+            }
         }
     }
 }
