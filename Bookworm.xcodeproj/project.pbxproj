@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		964EDDC92480850B00561C58 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964EDDC82480850B00561C58 /* RatingView.swift */; };
 		964EDDCB24808E0500561C58 /* EmojiRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964EDDCA24808E0500561C58 /* EmojiRatingView.swift */; };
+		964EDDCD248158AB00561C58 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964EDDCC248158AB00561C58 /* DetailView.swift */; };
 		966A151F247ED2CF009A3495 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966A151E247ED2CF009A3495 /* AppDelegate.swift */; };
 		966A1521247ED2CF009A3495 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966A1520247ED2CF009A3495 /* SceneDelegate.swift */; };
 		966A1524247ED2CF009A3495 /* Bookworm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 966A1522247ED2CF009A3495 /* Bookworm.xcdatamodeld */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		964EDDC82480850B00561C58 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		964EDDCA24808E0500561C58 /* EmojiRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiRatingView.swift; sourceTree = "<group>"; };
+		964EDDCC248158AB00561C58 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		966A151B247ED2CF009A3495 /* Bookworm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bookworm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		966A151E247ED2CF009A3495 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		966A1520247ED2CF009A3495 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				966F8F0E24805CBC00B0E728 /* AddBookView.swift */,
 				964EDDCA24808E0500561C58 /* EmojiRatingView.swift */,
 				964EDDC82480850B00561C58 /* RatingView.swift */,
+				964EDDCC248158AB00561C58 /* DetailView.swift */,
 				966A1527247ED2D3009A3495 /* Assets.xcassets */,
 				966A152C247ED2D3009A3495 /* LaunchScreen.storyboard */,
 				966A152F247ED2D3009A3495 /* Info.plist */,
@@ -159,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				966A151F247ED2CF009A3495 /* AppDelegate.swift in Sources */,
+				964EDDCD248158AB00561C58 /* DetailView.swift in Sources */,
 				966A1524247ED2CF009A3495 /* Bookworm.xcdatamodeld in Sources */,
 				964EDDCB24808E0500561C58 /* EmojiRatingView.swift in Sources */,
 				966A1526247ED2CF009A3495 /* ContentView.swift in Sources */,
