@@ -8,6 +8,16 @@
 
 import SwiftUI
 
+// day 56 - challenge 2
+struct ShowBook : View {
+    var book : Book
+    var body: some View {
+        Text(book.title ?? "Unknown Title")
+            .foregroundColor(1 == book.rating ? Color.red : .primary)
+            .font(.headline)
+    }
+}
+
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(entity: Book.entity(), sortDescriptors: [
@@ -26,8 +36,8 @@ struct ContentView: View {
                             .font(.largeTitle)
                         
                         VStack(alignment: .leading) {
-                            Text(book.title ?? "Unknown Title")
-                                .font(.headline)
+                            // day 56 - challenge 2
+                            ShowBook(book: book)
                             Text(book.author ?? "Unknown Author")
                                 .foregroundColor(.secondary)
                         }
