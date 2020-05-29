@@ -63,8 +63,7 @@ struct ContentView: View {
             
             moc.delete(book)
             
-            // for testing
-            //try? moc.save()
+            try? moc.save()
         }
     }
 }
