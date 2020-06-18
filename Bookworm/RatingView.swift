@@ -29,6 +29,9 @@ struct RatingView: View {
                     .onTapGesture {
                         self.rating = nummy
                 }
+                .accessibility(label: Text("\(1 == nummy ? "1 star" : "\(nummy) stars")"))
+                .accessibility(removeTraits: .isImage)
+                .accessibility(addTraits: nummy > self.rating ? .isButton : [.isButton, .isSelected])
             }
         }
     }
